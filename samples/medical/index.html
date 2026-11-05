@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<title>Northgate Family Medical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:ital,wght@0,600;0,700;0,800;1,700;1,800&display=swap">
+<style>
+/* Always light on purpose: a clinic should feel bright and welcoming. Layout: warm, friendly clinic site (sand, deep sea ink, ocean teal, sun gold). Safety strip, sticky header, split hero with a live "next available" appointment panel, quick-facts strip, filterable doctors, services, fees, new-patient steps, after-hours help, FAQ, hours and a general-question form. Sticky Call/Book bar on phones. No testimonials or health claims. */
+:root{
+  --bg:#f7f3ec; --fg:#15302f; --muted:#5c6b66; --surface:#ffffff; --line:#e6ddcf; --soft:#efe7da;
+  --teal:#08806f; --on-teal:#ffffff; --link:#066a5c; --open:#1f7a45; --alert:#a3261f; --on-alert:#ffffff; --chip:#ffffff; --sun:#f2b45a;
+  --display:'Nunito','Segoe UI',system-ui,sans-serif; --body:'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 var(--body);padding-block:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--link)} :focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.sample{background:var(--fg);color:var(--bg);font-size:13px;text-align:center;padding:6px 16px}
+.safety{background:var(--alert);color:var(--on-alert);font-size:15px}
+.safety .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;padding-block:8px}
+.safety b{font-weight:700}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font:800 20px var(--display);letter-spacing:-.01em}
+.logo svg{flex:none}
+nav{display:flex;align-items:center;gap:22px}
+nav a.l{color:var(--fg);text-decoration:none;font-weight:700;font-size:16px}
+nav a.l:hover{color:var(--link);text-decoration:underline;text-underline-offset:5px}
+.call{font-size:15px;color:var(--muted);white-space:nowrap}.call b{color:var(--fg)}
+@media(max-width:1060px){.call{display:none}}
+@media(max-width:900px){nav a.l{display:none}}
+.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font:700 17px var(--body);padding:13px 24px;border:2px solid var(--teal);border-radius:999px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--teal)}
+/* photo placeholders */
+.ph{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px;border:2px dashed var(--teal);border-radius:20px;background:repeating-linear-gradient(135deg,var(--soft) 0 14px,var(--bg) 14px 28px);color:var(--link);max-width:100%;min-width:0;overflow-wrap:anywhere}
+.ph svg{width:34px;height:34px}
+.ph b{font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.ph span{font-size:14px;color:var(--muted);max-width:30ch}
+.ph.hero-ph{aspect-ratio:4/5;width:100%}
+.ph.doc-ph{aspect-ratio:1/1;border-radius:14px;padding:10px;gap:4px}
+.ph.doc-ph svg{width:26px;height:26px}
+.ph.doc-ph b{font-size:12px}
+.ph.doc-ph span{font-size:12px}
+.gallery{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:16px}
+.gallery .ph{aspect-ratio:4/3}
+.gallery .ph:first-child{grid-row:span 2;aspect-ratio:auto;min-height:100%}
+@media(max-width:760px){.gallery{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.gallery .ph b{font-size:12px}.gallery .ph:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:16/10}}
+/* hero */
+.hero{padding-block:52px 40px;background:radial-gradient(1200px 520px at 15% 0%,#fdf1dc 0%,transparent 60%),radial-gradient(900px 500px at 95% 10%,#e3f4ef 0%,transparent 60%)}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:start}
+.hero .grid>div:first-child{padding-top:min(9vw,110px)}
+@media(max-width:900px){.hero .grid>div:first-child{padding-top:0}.ph.hero-ph{aspect-ratio:4/3}}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+.visual{position:relative}
+.visual .panel{position:relative;margin:-150px 0 0 -48px;width:calc(100% + 16px);box-shadow:0 18px 40px rgba(21,48,47,.14)}
+@media(max-width:1100px){.visual .panel{margin:-110px 0 0 0;width:100%}}
+@media(max-width:900px){.visual .panel{margin:-60px 12px 0;width:auto}}
+.ahead{margin:22px 0 0;font-size:16px;color:var(--muted);max-width:44ch}.ahead b{color:var(--fg)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px;font-size:15px;color:var(--muted)}
+.trust span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sun);margin-right:8px;vertical-align:1px}
+.status{display:inline-flex;align-items:center;gap:10px;background:var(--soft);border-radius:999px;padding:7px 15px;font-weight:700;font-size:15px;margin:0 0 20px}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--muted)}
+.status.open i{background:var(--open);box-shadow:0 0 0 4px color-mix(in srgb,var(--open) 22%,transparent)}
+.hero h1{margin:0;font:800 clamp(40px,6vw,68px)/1.05 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--teal);background:linear-gradient(transparent 68%,color-mix(in srgb,var(--sun) 55%,transparent) 68%);padding:0 .08em}
+.hero p.lede{margin:20px 0 28px;font-size:clamp(19px,2.2vw,21px);color:var(--muted);max-width:38ch}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.panel h2{margin:0;font:800 22px var(--display)}
+.panel .sub{margin:2px 0 14px;color:var(--muted);font-size:15px}
+.seg{display:inline-flex;background:var(--soft);border-radius:10px;padding:4px;gap:4px;margin-bottom:12px}
+.seg button{font:700 15px var(--body);border:0;background:transparent;color:var(--fg);padding:7px 14px;border-radius:8px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.doc-slots{display:grid;gap:12px}
+.ds{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 12px;align-items:center;padding-top:12px;border-top:1px solid var(--line)}
+.ds:first-child{border-top:0;padding-top:0}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 15px var(--body);color:var(--on-teal);background:var(--teal)}
+.ds b{font-size:16px} .ds small{display:block;color:var(--muted);font-size:14px}
+.times{grid-column:2;display:flex;flex-wrap:wrap;gap:6px}
+.times button{font:700 14px var(--body);font-variant-numeric:tabular-nums;border:1.5px solid var(--line);background:var(--chip);color:var(--fg);border-radius:8px;padding:6px 10px;cursor:pointer}
+.times button:hover{border-color:var(--teal)}
+.times button[aria-pressed=true]{background:var(--teal);border-color:var(--teal);color:var(--on-teal)}
+.times .none{color:var(--muted);font-size:14px}
+.pick{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.pick p{margin:0;font-size:15px;color:var(--muted)} .pick p b{color:var(--fg)}
+.pick .btn{padding:10px 18px;font-size:15px}
+.pick .btn[disabled]{opacity:.45;cursor:not-allowed}
+#pm{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:40px}
+.facts div{background:var(--surface);padding:16px 18px}
+.facts small{display:block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts b{font-size:17px}
+section{padding-block:64px;border-top:1px solid var(--line)}
+.eyebrow{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--link)}
+h2.t{margin:0 0 12px;font:800 clamp(30px,4.4vw,44px)/1.12 var(--display);letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+.intro{margin:0 0 30px;color:var(--muted);max-width:56ch}
+/* doctors */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chips button{font:700 15px var(--body);border:1.5px solid var(--line);background:var(--chip);color:var(--fg);border-radius:999px;padding:8px 16px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.grp{margin:30px 0 14px;font:800 20px var(--display)}.grp:first-child{margin-top:0}
+.docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:16px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.doc .av{width:56px;height:56px;font-size:18px}
+.doc h3{margin:0;font:800 21px var(--display)}
+.doc p{margin:0;color:var(--muted);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:13px;font-weight:700;background:var(--soft);border-radius:6px;padding:3px 8px}
+.doc .when{font-size:15px;color:var(--fg)} .doc .when b{color:var(--open)}
+.doc .btn{margin-top:auto;text-align:center;padding:10px 16px;font-size:16px}
+#nodoc{color:var(--muted)}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.svc>div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.svc svg{grid-row:span 2;width:44px;height:44px;padding:9px;border-radius:14px;background:color-mix(in srgb,var(--sun) 30%,var(--surface));color:var(--fg)}
+.svc h3{margin:0;font:800 19px var(--display)} .svc p{margin:0;color:var(--muted);font-size:16px}
+/* fees and new patients */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:12px 0;border-top:1px solid var(--line);vertical-align:top}
+th{font-weight:400} td{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:16px}
+td.h{font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.fees th{font-size:17px}
+td small{display:block;font-weight:400;color:var(--muted);font-size:14px;white-space:normal}
+.fine{margin-top:14px;font-size:14px;color:var(--muted)}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 14px;padding:14px 0;border-top:1px solid var(--line)}
+ol.steps li::before{content:counter(s);grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--teal);color:var(--on-teal);display:grid;place-items:center;font-weight:700;font-size:16px}
+ol.steps b{font-size:18px} ol.steps p{margin:0;color:var(--muted);font-size:16px}
+/* after hours */
+.ah{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.ah>div{border-radius:18px;padding:22px;background:var(--surface);border:1px solid var(--line)}
+.ah>div.urgent{border:2px solid var(--alert)}
+.ah h3{margin:0 0 6px;font:800 20px var(--display)} .ah p{margin:0;color:var(--muted);font-size:16px}
+.ah .num{display:block;margin-top:12px;font:700 26px var(--body);color:var(--fg);font-variant-numeric:tabular-nums;user-select:all}
+/* faq */
+details{border-top:1px solid var(--line);padding:16px 0} details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font:800 19px var(--display);cursor:pointer;list-style-position:outside}
+details p{margin:10px 0 0;color:var(--muted);max-width:64ch}
+/* hours */
+.hours tr.today th,.hours tr.today td{color:var(--teal);font-weight:700}
+.map{aspect-ratio:16/10;max-width:100%;border-radius:18px;border:1px solid var(--line);background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/40px 40px,var(--soft);position:relative;margin-bottom:14px}
+.map i{position:absolute;left:50%;top:46%;width:22px;height:22px;border-radius:50% 50% 50% 0;transform:translate(-50%,-50%) rotate(-45deg);background:var(--teal);border:3px solid var(--surface)}
+.addr p{margin:0 0 10px;color:var(--muted)} .addr b{color:var(--fg)}
+/* form */
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){form{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:16px;font-weight:700}
+input,textarea{font:400 17px var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;min-width:0}
+textarea{min-height:100px;resize:vertical} .full{grid-column:1/-1}
+.warn{margin:0;font-size:15px;color:var(--muted);background:var(--soft);border-radius:10px;padding:10px 12px}
+#m{margin:0;padding:10px 12px;border-left:4px solid var(--teal);background:var(--surface);font-size:16px}
+footer{border-top:1px solid var(--line);padding-block:28px calc(96px + env(safe-area-inset-bottom,0px));font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 18px}.flinks a{color:var(--fg)}
+@media(min-width:761px){footer{padding-bottom:40px}}
+/* phone action bar */
+.bar{display:none}
+@media(max-width:760px){
+ .bar{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--bg);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+ .bar .btn{text-align:center;padding:12px}
+}
+</style>
+
+<div class="sample"><a href="../../" style="color:inherit;font-weight:700;text-decoration:underline;margin-right:12px">&larr; Back to MYBGA</a>Sample website. Practice name, doctors, times and fees are made up to show what is possible.</div>
+<div class="safety"><div class="wrap"><span><b>Emergency:</b> call 000</span><span><b>24/7 health advice:</b> healthdirect 1800 022 222</span></div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#top"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="currentColor" style="color:var(--teal)"/><path d="M12 7h6v5h5v6h-5v5h-6v-5H7v-6h5z" fill="var(--on-teal)"/></svg>Northgate Family Medical</a>
+  <nav aria-label="Main"><a class="l" href="#doctors">Doctors</a><a class="l" href="#services">Services</a><a class="l" href="#fees">Fees</a><a class="l" href="#new">New patients</a><a class="l" href="#hours">Hours</a><span class="call">Call <b>(02) 5550 0000</b></span><a class="btn" href="#book">Book online</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+ <div class="grid">
+  <div>
+   <p class="status" id="status"><i></i><span>Checking opening hours</span></p>
+   <h1>Family doctors who <em>know you</em>, close to home.</h1>
+   <p class="lede">Appointments for every age, same-day spots most weekdays, and new patients always welcome.</p>
+   <div class="row"><a class="btn" href="#book">Book an appointment</a><a class="btn ghost" href="#new">New patient? Start here</a></div>
+   <p class="ahead"><b>Booking ahead is best for everyone.</b> Walk-ins are welcome when a doctor is free.</p>
+   <div class="trust"><span>Same-day appointments</span><span>Telehealth available</span><span>Languages: Mandarin, Arabic, Hindi</span></div>
+  </div>
+  <div class="visual">
+  <div class="ph hero-ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>Main photo: a doctor with a patient, or the front of the clinic. Portrait shape, bright and natural.</span></div>
+  <div class="panel" id="book" aria-labelledby="nah">
+   <h2 id="nah">Next available</h2>
+   <p class="sub">Pick a time to continue to online booking.</p>
+   <div class="seg" role="group" aria-label="Day"><button type="button" data-d="0" aria-pressed="true">Today</button><button type="button" data-d="1" aria-pressed="false">Tomorrow</button></div>
+   <div class="doc-slots" id="slots"></div>
+   <div class="pick"><p id="sel">No time selected</p><button class="btn" id="go" type="button" disabled>Continue</button></div>
+   <p id="pm" aria-live="polite" hidden></p>
+  </div>
+  </div>
+ </div>
+ <div class="facts">
+  <div><small>Hours today</small><b id="today">See hours</b></div>
+  <div><small>Phone</small><b>(02) 5550 0000</b></div>
+  <div><small>Telehealth</small><b>Phone and video</b></div>
+  <div><small>Access</small><b>Free parking, step-free</b></div>
+ </div>
+</div></div>
+
+<section id="doctors"><div class="wrap">
+ <p class="eyebrow">Our doctors</p>
+ <h2 class="t">Choose the doctor who suits you.</h2>
+ <p class="intro">GPs, allied health and visiting specialists under one roof. Filter by gender or language, then book straight into a free time.</p>
+ <div class="chips" id="chips" role="group" aria-label="Filter doctors"></div>
+ <div id="docs"></div>
+ <p id="nodoc" hidden>No doctor matches that filter. Clear it to see everyone.</p>
+</div></section>
+
+<section id="services"><div class="wrap">
+ <p class="eyebrow">Services</p>
+ <h2 class="t">Everyday care for the whole family.</h2>
+ <p class="intro">Not sure if we can help? Call reception and ask. We'll tell you straight away.</p>
+ <div class="svc">
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M12 15v2a4 4 0 0 0 8 0v-2"/><circle cx="20" cy="13" r="2"/></svg><h3>General consultations</h3><p>Illness, injuries, check-ups and ongoing care.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2 1.5-3.5 3-3.5s3 1.5 3 3.5"/></svg><h3>Children and families</h3><p>Immunisations, growth checks and baby visits.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg><h3>Chronic disease care</h3><p>Care plans, regular reviews and team care arrangements.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><h3>Health checks</h3><p>Women's and men's health, screening and over-75 assessments.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><h3>Skin checks</h3><p>Spot checks and minor procedures. [Confirm with the clinic.]</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><h3>Work and travel</h3><p>Pre-employment medicals, travel vaccines and certificates.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg><h3>On-site pathology</h3><p>Blood tests in the building, so there is no second trip.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><h3>Mental health</h3><p>GP mental health care plans and our in-house psychologist.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><h3>Nurse clinic</h3><p>Wound care, ECGs and help with care plans.</p></div>
+ </div>
+</div></section>
+
+<section id="clinic"><div class="wrap">
+ <p class="eyebrow">Inside the clinic</p>
+ <h2 class="t">Come in and have a look.</h2>
+ <p class="intro">Bright rooms, a quiet waiting area and a play corner for kids.</p>
+ <div class="gallery">
+  <div class="ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>Reception desk with staff smiling</span></div>
+  <div class="ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>Waiting area</span></div>
+  <div class="ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>A consult room</span></div>
+  <div class="ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>Kids' corner</span></div>
+  <div class="ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><b>Add photo here</b><span>Outside, showing parking and entry</span></div>
+ </div>
+</div></section>
+
+<section id="fees"><div class="wrap"><div class="two">
+ <div>
+  <p class="eyebrow">Fees and billing</p>
+  <h2 class="t">Know the cost before you come.</h2>
+  <table class="fees">
+   <tr><th scope="col">Appointment</th><td class="h">Fee</td><td class="h">Medicare rebate</td></tr>
+   <tr><th>Standard consultation</th><td>$[X]</td><td>$[X]</td></tr>
+   <tr><th>Long consultation</th><td>$[X]</td><td>$[X]</td></tr>
+   <tr><th>Telehealth</th><td>$[X]</td><td>$[X]</td></tr>
+   <tr><th>Children under 16</th><td>[Bulk billed?]</td><td></td></tr>
+   <tr><th>Pension and concession card holders</th><td>[Bulk billed?]</td><td></td></tr>
+  </table>
+  <p class="fine">Payment is due on the day. We can process your Medicare rebate on the spot, so it goes straight back to your account. We accept card and cash.</p><p class="fine">Fees vary with the length and complexity of the visit. Reception can tell you the out-of-pocket cost when you book.</p>
+ </div>
+ <div id="new">
+  <p class="eyebrow">New patients</p>
+  <h2 class="t">Your first visit, step by step.</h2>
+  <ol class="steps">
+   <li><b>Book online or call</b><p>Choose any doctor taking new patients.</p></li>
+   <li><b>Fill in the new patient form</b><p>We text you a link after booking. It takes about five minutes.</p></li>
+   <li><b>Bring your cards and ID</b><p>Medicare card, photo ID, and any concession or DVA card. WorkCover? Bring your claim number.</p></li>
+   <li><b>Arrive 10 minutes early</b><p>Bring a list of your medicines and any recent results or referrals.</p></li>
+  </ol>
+ </div>
+</div></div></section>
+
+<section id="afterhours"><div class="wrap">
+ <p class="eyebrow">When we're closed</p>
+ <h2 class="t">Help outside opening hours</h2>
+ <div class="ah">
+  <div class="urgent"><h3>Emergency</h3><p>Chest pain, trouble breathing, severe bleeding or injury.</p><span class="num">000</span></div>
+  <div><h3>Health advice, any time</h3><p>Talk to a registered nurse 24 hours a day, 7 days a week.</p><span class="num">1800 022 222</span></div>
+  <div><h3>After-hours doctor</h3><p>[Add the after-hours or home-visit service the clinic uses.]</p><span class="num">[Number]</span></div>
+ </div>
+</div></section>
+
+<section id="policies"><div class="wrap">
+ <p class="eyebrow">Practice policies</p>
+ <h2 class="t">Good to know</h2>
+ <details><summary>Cancellations and missed appointments</summary><p>Please give at least 2 hours' notice for GP visits and 48 hours for allied health, so someone else can take the time. A fee may apply for missed appointments.</p></details>
+ <details><summary>Your privacy</summary><p>Your health information is kept private and secure, and only shared with your consent or where the law requires it. Ask reception for our full privacy policy.</p></details>
+ <details><summary>Email and messages</summary><p>Email is not checked around the clock, so never use it for urgent problems or appointments. Call the clinic, or 000 in an emergency.</p></details>
+ <details><summary>Running late</summary><p>Call us if you are running late. If you are more than 10 minutes late we may need to move your appointment.</p></details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <p class="eyebrow">Questions</p>
+ <h2 class="t">Before you visit</h2>
+ <details><summary>Can I get a same-day appointment?</summary><p>Most weekdays, yes. We keep some times free each morning. Book online from 7:30 am or call when we open.</p></details>
+ <details><summary>Do you do telehealth?</summary><p>Yes, by phone or video, for follow-ups, results and scripts. Your doctor will tell you if you need to come in.</p></details>
+ <details><summary>How do I get my results?</summary><p>Your doctor will contact you if anything needs action. You can also book a short telehealth call to go through them.</p></details>
+ <details><summary>I don't have Medicare. Can I still see a doctor?</summary><p>Yes. You pay the private fee on the day, and we give you a receipt for your insurer.</p></details>
+ <details><summary>Can I get a medical certificate?</summary><p>Yes, after a consultation in person or by telehealth.</p></details>
+ <details><summary>Do I need to fast before a blood test?</summary><p>Only for some tests. Your doctor will tell you, and our on-site pathology team can check when you book.</p></details>
+ <details><summary>How do I move my records from another clinic?</summary><p>Sign a transfer form at reception and we request them for you.</p></details>
+ <details><summary>Can I bring an interpreter?</summary><p>Yes. We can also book a free phone interpreter for you. Just ask when you book.</p></details>
+</div></section>
+
+<section id="hours"><div class="wrap"><div class="two">
+ <div>
+  <p class="eyebrow">Opening hours</p>
+  <h2 class="t">When we're open</h2>
+  <table class="hours" id="ht"></table>
+  <p class="fine">Public holidays: [add hours].</p>
+ </div>
+ <div class="addr">
+  <p class="eyebrow">Find us</p>
+  <div class="map" role="img" aria-label="Map placeholder showing the clinic location"><i></i></div>
+  <p><b>12 Example Street, Kellyville NSW</b></p>
+  <p>Free parking out the front, step-free entry and an accessible bathroom.</p>
+  <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Kellyville+NSW" target="_blank" rel="noopener">Get directions</a>
+ </div>
+</div></div></section>
+
+<section id="contact"><div class="wrap"><div class="two">
+ <div>
+  <p class="eyebrow">General questions</p>
+  <h2 class="t">Ask reception</h2>
+  <p class="intro">For questions about fees, forms or services. For appointments, use online booking above.</p>
+ </div>
+ <form id="f">
+  <label>Name<input id="n" required autocomplete="name"></label>
+  <label>Mobile<input id="mo" type="tel" required autocomplete="tel"></label>
+  <label class="full">Your question<textarea id="q"></textarea></label>
+  <p class="warn full">Please don't include medical details here. For anything urgent, call the clinic, or 000 in an emergency.</p>
+  <div class="full"><button class="btn" type="submit">Send question</button></div>
+  <p id="m" class="full" hidden></p>
+ </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><div><b style="color:var(--fg)">Northgate Family Medical</b><br>12 Example Street, Kellyville NSW<br>(02) 5550 0000 · Emergency 000</div><div class="flinks"><a href="#doctors">Doctors</a><a href="#services">Services</a><a href="#fees">Fees</a><a href="#new">New patients</a><a href="#policies">Policies</a><a href="#hours">Hours</a></div><div>Sample site built by MYBGA.</div></div></footer>
+
+<div class="bar"><a class="btn ghost" href="#hours">Call or visit</a><a class="btn" href="#book">Book online</a></div>
+
+<script>
+var DOCS=[
+ {id:'sc',type:'GP',n:'Dr Sarah Chen',i:'SC',g:'Female',lang:['English','Mandarin'],p:'Women\'s health, antenatal shared care and family medicine.',slots:[['10:40','11:20','3:15'],['9:00','9:20','2:40']]},
+ {id:'mh',type:'GP',n:'Dr Michael Haddad',i:'MH',g:'Male',lang:['English','Arabic'],p:'Chronic disease care, men\'s health and skin checks.',slots:[['4:30'],['8:40','11:00','11:20','4:00']]},
+ {id:'pn',type:'GP',n:'Dr Priya Nair',i:'PN',g:'Female',lang:['English','Hindi','Malayalam'],p:'Children\'s health, immunisations and mental health care plans.',slots:[[],['10:00','1:40']]},
+ {id:'jw',type:'GP',n:'Dr James Walker',i:'JW',g:'Male',lang:['English'],p:'Sports injuries, work medicals and travel health.',slots:[['12:10','5:20'],['3:00','3:20','5:40']]},
+ {id:'el',type:'Allied health',n:'Emma Lewis',i:'EL',g:'Female',lang:['English'],p:'Psychologist. Anxiety, stress and adjustment support. Mental health care plan referrals accepted.',role:'Psychologist',slots:[[],['10:00','2:00']]},
+ {id:'dr',type:'Visiting specialists',n:'Dr Daniel Ross',i:'DR',g:'Male',lang:['English'],p:'Cardiologist, visiting monthly. Referral from your GP needed.',role:'Cardiologist',slots:[[],[]]},
+ {id:'ak',type:'Visiting specialists',n:'Dr Amira Khalil',i:'AK',g:'Female',lang:['English','Arabic'],p:'Obstetrician and gynaecologist, visiting fortnightly. Referral needed.',role:'Obstetrics',slots:[[],[]]}
+];
+var day=0, pick=null, filt='All';
+function ampm(t){var h=parseInt(t,10);return t+(h>=7&&h<12?' am':' pm');}
+function drawSlots(){
+ var h='';DOCS.filter(function(d){return d.type==='GP';}).forEach(function(d){
+  var s=d.slots[day];
+  h+='<div class="ds"><span class="av" aria-hidden="true">'+d.i+'</span><div><b>'+d.n+'</b><small>'+d.lang.join(', ')+'</small></div><div class="times">'+
+   (s.length?s.map(function(t){var k=d.id+'|'+day+'|'+t;return '<button type="button" data-k="'+k+'" aria-pressed="'+(pick===k)+'">'+ampm(t)+'</button>';}).join(''):'<span class="none">Fully booked</span>')+'</div></div>';
+ });
+ var el=document.getElementById('slots');el.innerHTML=h;
+ [].forEach.call(el.querySelectorAll('button'),function(b){b.onclick=function(){pick=pick===b.dataset.k?null:b.dataset.k;drawSlots();sel();};});
+}
+function sel(){
+ var p=document.getElementById('sel'),g=document.getElementById('go');
+ if(!pick){p.textContent='No time selected';g.disabled=true;return;}
+ var a=pick.split('|'),d=DOCS.filter(function(x){return x.id===a[0];})[0];
+ p.innerHTML='<b>'+ampm(a[2])+' '+(a[1]==='0'?'today':'tomorrow')+'</b> with '+d.n;g.disabled=false;
+}
+[].forEach.call(document.querySelectorAll('.seg button'),function(b){b.onclick=function(){day=+b.dataset.d;pick=null;[].forEach.call(document.querySelectorAll('.seg button'),function(x){x.setAttribute('aria-pressed',x===b);});drawSlots();sel();document.getElementById('pm').hidden=true;};});
+document.getElementById('go').onclick=function(){var m=document.getElementById('pm');m.hidden=false;m.textContent='Sample only. On the real site this opens the clinic\'s booking system with this time already chosen.';};
+function next(d){for(var k=0;k<2;k++){if(d.slots[k].length)return '<b>'+ampm(d.slots[k][0])+'</b> '+(k?'tomorrow':'today');}return 'No times in the next two days';}
+var FILTERS=['All','Female','Male','Mandarin','Arabic','Hindi'];
+function drawChips(){var c=document.getElementById('chips');c.innerHTML='';FILTERS.forEach(function(f){var b=document.createElement('button');b.type='button';b.textContent=f==='Female'||f==='Male'?f+' doctor':f;b.setAttribute('aria-pressed',f===filt);b.onclick=function(){filt=f;drawChips();drawDocs();};c.appendChild(b);});}
+function drawDocs(){
+ var list=DOCS.filter(function(d){return filt==='All'||d.g===filt||d.lang.indexOf(filt)>-1;}),h='';
+ ['GP','Allied health','Visiting specialists'].forEach(function(t){
+  var g=list.filter(function(d){return d.type===t;});if(!g.length)return;
+  h+='<h3 class="grp">'+(t==='GP'?'GPs':t)+'</h3><div class="docs">';
+  g.forEach(function(d){h+='<article class="doc"><div class="ph doc-ph" role="img" aria-label="Photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><b>Add photo here</b><span>Head and shoulders of '+d.n+'</span></div><h3>'+d.n+'</h3><p>'+d.p+'</p><div class="tags">'+d.lang.map(function(l){return '<span>'+l+'</span>';}).join('')+'</div>'+(t==='Visiting specialists'?'<p class="when">Book through reception with a referral</p><span class="btn ghost" style="text-align:center">Call reception</span>':'<p class="when">Next free: '+next(d)+'</p><a class="btn ghost" href="#book">Book with '+d.n.replace('Dr ','').split(' ')[0]+'</a>')+'</article>';});
+  h+='</div>';
+ });
+ document.getElementById('docs').innerHTML=h;document.getElementById('nodoc').hidden=list.length>0;
+}
+var H=[['Monday',8,18],['Tuesday',8,18],['Wednesday',8,20],['Thursday',8,18],['Friday',8,18],['Saturday',9,13],['Sunday',0,0]];
+function fmt(h){var s=h<12?'am':'pm',x=h%12||12;return x+':00 '+s;}
+function now(){var o={};new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',weekday:'long',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(x){o[x.type]=x.value;});return {d:o.weekday,t:(parseInt(o.hour,10)%24)+parseInt(o.minute,10)/60};}
+(function(){
+ var n=now(),rows='';
+ H.forEach(function(r){rows+='<tr'+(r[0]===n.d?' class="today"':'')+'><th>'+r[0]+(r[0]===n.d?' (today)':'')+'</th><td>'+(r[1]?fmt(r[1])+' to '+fmt(r[2]):'Closed')+'</td></tr>';});
+ document.getElementById('ht').innerHTML=rows;
+ var td=H.filter(function(r){return r[0]===n.d;})[0],open=td&&td[1]&&n.t>=td[1]&&n.t<td[2],st=document.getElementById('status');
+ st.className='status'+(open?' open':'');
+ st.querySelector('span').textContent=open?'Open now, until '+fmt(td[2]):'Closed now. Book online any time';
+ document.getElementById('today').textContent=td&&td[1]?fmt(td[1])+' to '+fmt(td[2]):'Closed today';
+})();
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('m');m.hidden=false;m.textContent='Sample only, so nothing was sent. On a real site this goes to reception.';});
+drawSlots();sel();drawChips();drawDocs();
+</script>
+
+</html>

@@ -2,7 +2,10 @@
 
 The live site for MYBGA (Making Your Business Great Again), Sydney.
 
-## What's here
+## Current status
+The live site shows a "coming soon" page (this branch, `main`). The full website and samples are saved on the `full-site` branch. To launch, merge `full-site` into `main`.
+
+## What's here (on `full-site`)
 - `index.html` is the main website.
 - `samples/` holds the sample sites shown in the Work section. They are marked `noindex` so search engines don't list the made-up businesses.
 - `favicon.png`, `apple-touch-icon.png` and `og.jpg` are the tab icon, phone home-screen icon and link-preview image.

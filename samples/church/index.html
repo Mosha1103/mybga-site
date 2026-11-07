@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<title>Hillside Community Church</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: warm welcome hero, a prominent service-times strip, plan-your-visit answers, a dated events list, then watch online, give and a contact form. */
+:root{
+  color-scheme:light;
+  --bg:#f5f6f8; --fg:#1b2438; --muted:#586177; --surface:#ffffff; --line:#d9dde6;
+  --navy:#1d2b4a; --on-navy:#eef1f8; --navy-muted:#aab6d3; --gold:#b8862b; --link:#1d3b78; --accent:#b8862b; --on-accent:#ffffff;
+  --display:'Newsreader',Georgia,serif; --body:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 var(--body);padding-block:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:40}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--link)} :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sample{background:var(--fg);color:var(--bg);font-size:13px;text-align:center;padding:7px 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--navy);color:var(--on-navy)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
+.logo{font:600 22px var(--display);color:var(--on-navy);text-decoration:none}
+nav{display:flex;align-items:center;gap:22px} nav a.l{color:var(--on-navy);text-decoration:none;font-weight:600;font-size:15px}
+@media(max-width:760px){nav a.l{display:none}}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font:700 16px var(--body);padding:12px 22px;border:0;border-radius:6px;text-decoration:none;cursor:pointer}
+.btn.line{background:transparent;color:var(--on-navy);border:2px solid var(--navy-muted)}
+.hero{background:linear-gradient(180deg,var(--navy),#24365f);color:var(--on-navy);padding-block:64px 70px}
+.hero h1{margin:0;font:500 clamp(44px,8vw,92px)/1 var(--display);letter-spacing:-.015em;max-width:12ch;text-wrap:balance}
+.hero h1 em{font-style:italic;color:#f0cf86}
+.hero p{margin:22px 0 28px;font-size:clamp(19px,2.4vw,23px);max-width:38ch;color:var(--navy-muted)}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px}
+.times{background:var(--surface);border-block:1px solid var(--line)}
+.times .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0}
+.times .t{padding:24px 20px 24px 0;border-right:1px solid var(--line)} .times .t:last-child{border-right:0}
+@media(max-width:560px){.times .t{border-right:0;border-bottom:1px solid var(--line);padding:18px 0}}
+.times small{display:block;font:700 12px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--link)}
+.times b{display:block;font:500 28px/1.15 var(--display);margin-top:4px} .times span{color:var(--muted);font-size:16px}
+section{padding-block:62px;border-top:1px solid var(--line)} .times+section{border-top:0}
+.eyebrow{margin:0 0 8px;font:700 12px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--link)}
+h2{margin:0 0 26px;font:500 clamp(30px,5vw,48px)/1.05 var(--display);letter-spacing:-.01em;max-width:18ch;text-wrap:balance}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:34px}
+.cols h3{margin:0 0 6px;font:600 24px var(--display)} .cols p{margin:0;color:var(--muted)}
+.ev{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:6px 22px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.ev:last-child{border-bottom:1px solid var(--line)}
+@media(max-width:560px){.ev{grid-template-columns:70px minmax(0,1fr)}.ev .w{grid-column:2}}
+.ev .d{text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:6px 0;line-height:1.1}
+.ev .d b{display:block;font:600 28px var(--display)} .ev .d span{font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--link)}
+.ev h3{margin:0;font:600 22px var(--display)} .ev p{margin:2px 0 0;color:var(--muted);font-size:16px} .ev .w{color:var(--muted);font-size:15px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px}
+.card h3{margin:0 0 8px;font:600 26px var(--display)} .card p{margin:0 0 16px;color:var(--muted)}
+.video{aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#24365f,#101a33);border-radius:8px;display:grid;place-items:center;color:var(--on-navy);margin-bottom:14px;font-size:15px}
+.cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px}
+@media(max-width:800px){.cta{grid-template-columns:1fr}} .cta p{color:var(--muted);margin:0 0 12px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){form{grid-template-columns:1fr}}
+label{display:grid;gap:5px;font-size:15px;font-weight:600}
+input,select,textarea{font:400 17px var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;width:100%;min-width:0}
+textarea{min-height:90px;resize:vertical} .full{grid-column:1/-1}
+#m{margin:0;padding:11px 13px;border-left:4px solid var(--gold);background:var(--surface);font-size:16px}
+footer{background:var(--navy);color:var(--navy-muted);padding:26px 0 46px;font-size:15px}
+</style>
+<div class="sample"><a href="../../" style="color:inherit;font-weight:700;text-decoration:underline;margin-right:12px">&larr; Back to MYBGA</a>Sample website. Church name, times and events are made up to show what is possible.</div>
+<header><div class="wrap"><a class="logo" href="#top">Hillside Community Church</a>
+<nav aria-label="Main"><a class="l" href="#visit">Plan a visit</a><a class="l" href="#events">Events</a><a class="l" href="#watch">Watch online</a><a class="l" href="#give">Give</a><a class="btn" href="#contact">Say hello</a></nav></div></header>
+<main id="top">
+<div class="hero"><div class="wrap"><h1>Come as you are. <em>You belong here.</em></h1>
+<p>A friendly church in the north-west with something for every age, from kids to seniors.</p>
+<div class="row"><a class="btn" href="#visit">Plan your visit</a><a class="btn line" href="#watch">Watch online</a></div></div></div>
+<div class="times"><div class="wrap">
+<div class="t"><small>Sunday</small><b>9:00 am</b><span>Morning service</span></div>
+<div class="t"><small>Sunday</small><b>10:45 am</b><span>Family service with kids' program</span></div>
+<div class="t"><small>Friday</small><b>7:00 pm</b><span>Youth night, Years 7 to 12</span></div></div></div>
+<section id="visit"><div class="wrap"><p class="eyebrow">Plan your visit</p><h2>What to expect on your first Sunday</h2>
+<div class="cols"><div><h3>Finding us</h3><p>12 Example Street, Kellyville NSW. Free parking on site, with spaces near the door for accessibility. Doors open 30 minutes early.</p></div>
+<div><h3>What it is like</h3><p>About 75 minutes of singing, a short talk and prayer. Wear what is comfortable. Tea and coffee afterwards, and someone will say hello.</p></div>
+<div><h3>For your kids</h3><p>Supervised kids' program during the 10:45 service for ages 0 to 12. Our team hold current Working With Children Checks.</p></div></div></div></section>
+<section id="events"><div class="wrap"><p class="eyebrow">What's on</p><h2>Coming up this month</h2>
+<div class="ev"><div class="d"><b>02</b><span>Nov</span></div><div><h3>Community BBQ</h3><p>Free lunch after the 10:45 service. Everyone welcome.</p></div><span class="w">12:00 pm</span></div>
+<div class="ev"><div class="d"><b>09</b><span>Nov</span></div><div><h3>Op shop and book sale</h3><p>All proceeds go to local families in need.</p></div><span class="w">9:00 am to 1:00 pm</span></div>
+<div class="ev"><div class="d"><b>14</b><span>Nov</span></div><div><h3>Seniors' morning tea</h3><p>Tea, cake and a guest speaker.</p></div><span class="w">10:00 am</span></div>
+<div class="ev"><div class="d"><b>23</b><span>Nov</span></div><div><h3>Carols planning night</h3><p>Help us plan the Christmas carols evening.</p></div><span class="w">7:00 pm</span></div></div></section>
+<section id="watch"><div class="wrap"><div class="two">
+<div class="card"><p class="eyebrow">Watch online</p><div class="video" aria-label="Sample video area">Livestream and past talks appear here</div><h3>Can't make it in person?</h3><p>Join the livestream each Sunday at 10:45 am, or catch up on past talks any time.</p><a class="btn" href="#watch">Open the talks page</a></div>
+<div class="card" id="give"><p class="eyebrow">Give</p><h3>Support the work</h3><p>Giving is optional and never expected from visitors. If you call Hillside home and want to give, you can do it securely online or by bank transfer.</p><a class="btn" href="#give">Give online</a></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="cta"><div><p class="eyebrow">Get in touch</p><h2>Questions, or want prayer?</h2><p>Send a note and someone from the team will reply. Prayer requests go to a small, confidential team.</p><p>(02) 5550 0000<br>hello@example.org</p></div>
+<form id="f"><label>Name<input id="n" required autocomplete="name"></label><label>Email or mobile<input id="c" required></label>
+<label class="full">I am writing about<select id="s"><option>Visiting for the first time</option><option>Kids or youth programs</option><option>A prayer request</option><option>Something else</option></select></label>
+<label class="full">Message<textarea id="t"></textarea></label>
+<div class="full"><button class="btn" type="submit">Send</button></div><p id="m" class="full" hidden></p></form></div></div></section>
+</main>
+<footer><div class="wrap">Hillside Community Church is a sample site. Built by MYBGA.</div></footer>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('m');m.hidden=false;m.textContent='Sample only, so nothing was sent. On a real site this reaches the church office.';});
+</script>
+
+</html>

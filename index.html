@@ -16,7 +16,7 @@
 <title>MYBGA | Websites and business advice, Sydney</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap">
 <style>
 /* Layout: their full-screen tan hero (emblem bottom-right, MYBGA bottom-left) kept as is; below it, quiet editorial sections on the same grained tan with ivory serif headings, hairline rules and wide-tracked small caps. Single committed look. */
 :root{
@@ -146,7 +146,10 @@ footer{border-top:1px solid var(--rule);padding-block:80px calc(32px + env(safe-
 footer .fm{font:400 44px/1 var(--serif);letter-spacing:.06em}
 .ftag{margin:14px 0 34px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft)}
 .flabel{display:block;margin-bottom:16px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft)}
-.fmission{margin:0;max-width:64ch;font-size:15px;line-height:1.85;color:var(--soft)}
+.fmission{max-width:58ch;padding-left:22px;border-left:1px solid rgba(244,238,224,.35)}
+.fmission p{margin:0;font:italic 400 19px/1.55 'Cormorant Garamond',Georgia,serif;letter-spacing:.005em;color:var(--soft)}
+.fmission p+p{margin-top:14px}
+@media(max-width:600px){.fmission{padding-left:16px}.fmission p{font-size:17.5px}}
 .fnav{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 footer .fnav a{font-size:11px;letter-spacing:.22em}
 .fcontact p{margin:0 0 22px;font-size:15px;line-height:1.8;color:var(--soft);word-break:break-word}
@@ -290,7 +293,7 @@ footer .fnav a{font-size:11px;letter-spacing:.22em}
 
 <footer><div class="wrap">
 <div class="fgrid">
- <div class="fbrand"><div class="fm">MYBGA</div><p class="ftag">Making your business great again</p><span class="flabel">Our mission</span><p class="fmission">We are a team of small business enthusiasts with a penchant for giving family/community businesses and companies an online presence in an age of corporations and overly automated systems. The team at MYBGA work closely with each client while implementing contemporary tools and workflows. MYBGA looks to maintain a personal touch, and a conscientious approach to the respective cultures and their inherent community demands. MYBGA is Making your Business Great Again by making your services more available, consistent and current. We offer website construction, re-construction and thorough maintenance, assuring no one misses out on what your business has to offer.</p></div>
+ <div class="fbrand"><div class="fm">MYBGA</div><p class="ftag">Making your business great again</p><span class="flabel">Our mission</span><div class="fmission"><p>We are a team of small business enthusiasts with a penchant for giving family/community businesses and companies an online presence in an age of corporations and overly automated systems.</p><p>The team at MYBGA work closely with each client while implementing contemporary tools and workflows. MYBGA looks to maintain a personal touch, and a conscientious approach to the respective cultures and their inherent community demands.</p><p>MYBGA is Making your Business Great Again by making your services more available, consistent and current. We offer website construction, re-construction and thorough maintenance, assuring no one misses out on what your business has to offer.</p></div></div>
  <div><span class="flabel">Explore</span><nav class="fnav" aria-label="Footer"><a href="#home">Home</a><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav></div>
  <div class="fcontact"><span class="flabel">Get in touch</span><p>mosha.webdesign<wbr>@gmail.com<br>Sydney NSW</p><a class="btn" href="#contact">Free mock-up</a></div>
 </div>

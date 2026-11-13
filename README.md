@@ -8,7 +8,7 @@ The live site for MYBGA (Making Your Business Great Again), Sydney.
 - `favicon.png`, `apple-touch-icon.png` and `og.jpg` are the tab icon, phone home-screen icon and link-preview image.
 
 ## Publishing
-The site is hosted on Netlify (https://mybga-site.netlify.app), connected to this repo. Every push to `main` deploys automatically.
+The site lives at https://mybga.com.au and is hosted on Netlify (project mybga-site), connected to this repo. Every push to `main` deploys automatically.
 Any change pushed to `main` goes live within a minute or two.
 
 ## Before launch

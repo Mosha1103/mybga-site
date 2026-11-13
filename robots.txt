@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mybga.com.au/sitemap.xml

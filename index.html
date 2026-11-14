@@ -120,10 +120,13 @@ p{margin:0}
 .ptitle{margin:56px 0 18px;font:400 11px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--soft)}
 h2+.ptitle{margin-top:0}
 .how{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule)}
-.how ul{margin:16px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 48px;max-width:960px}
-@media(max-width:700px){.how ul{grid-template-columns:1fr}}
-.how li{color:var(--soft);font-size:15px;padding-left:18px;position:relative}
-.how li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:1px;background:var(--ivory)}
+.how ol{margin:22px 0 0;padding:0;list-style:none;counter-reset:hw;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px}
+@media(max-width:1000px){.how ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}}
+@media(max-width:600px){.how ol{grid-template-columns:1fr}}
+.how li{counter-increment:hw;padding:18px 0 22px;border-top:1px solid var(--rule)}
+.how li::before{content:counter(hw,upper-roman);display:block;font:400 15px/1 var(--serif);color:var(--soft);letter-spacing:.08em;margin-bottom:12px}
+.how b{display:block;font:400 21px/1.3 var(--serif)}
+.how p{margin-top:6px;color:var(--soft);font-size:15px}
 
 .contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:72px}
 @media(max-width:860px){.contact{grid-template-columns:1fr;gap:40px}}
@@ -263,12 +266,12 @@ footer .fnav a{font-size:11px;letter-spacing:.22em}
 
 <div class="how rv">
 <h3>How quotes work</h3>
-<ul>
-<li>Your quote lists the pages, features, rounds of changes and timeline, in writing.</li>
-<li>Websites: 50% deposit to start, the rest when your site goes live. Software: paid per milestone.</li>
-<li>Anything outside the quote is agreed with you first.</li>
-<li>Prices are in Australian dollars. GST is added once we are registered.</li>
-</ul>
+<ol>
+<li><b>Everything in writing</b><p>Pages, features, rounds of changes and the timeline, agreed before work starts.</p></li>
+<li><b>Fair payment terms</b><p>Websites: half to start, the rest when your site goes live. Software: paid as each stage is delivered.</p></li>
+<li><b>No surprise costs</b><p>Anything outside the quote is priced and agreed with you before we do it.</p></li>
+<li><b>Australian dollars</b><p>All prices are in AUD. GST will be added once we are registered.</p></li>
+</ol>
 </div>
 </div></section>
 
